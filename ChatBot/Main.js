@@ -1,5 +1,5 @@
 const TeleBot = require("telebot");
-const axios = require("axios");
+const getProducts = require("./modules/products")
 require('dotenv').config();
 let {boton}=require('./Buttons/buttons');
 const bot = new TeleBot({
@@ -19,7 +19,7 @@ const bot = new TeleBot({
     
     bot.on('/show',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
-        bot.sendMessage(msg.from.id,"Mostrando Productos",{replyMarkup});
+        getProducts(bot,msg,replyMarkup);
     });
 
     bot.on('/pago',msg=>{
