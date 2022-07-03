@@ -10,6 +10,6 @@ Se trata de crear una herramienta que permita una fácil e intuitiva interacció
 ### Equipo detrás del proyecto:
 
 [Wilfredo Pinto](https://github.com/wilfredo482)  | 
-[Juan Montiel]()  | 
+[Juan Montiel](https://github.com/montiellvazz)  | 
 [Francisco Javier Mendoza](https://github.com/fmbalza)  | 
 [Javier de Olivera](https://github.com/requin883)  |
