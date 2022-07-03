@@ -1,5 +1,6 @@
 const TeleBot = require("telebot");
-const getProducts = require("./modules/products")
+const getProducts = require("./modules/products");
+const createTrolley = require("./modules/trolley")
 require('dotenv').config();
 let {boton}=require('./Buttons/buttons');
 const bot = new TeleBot({
@@ -21,6 +22,7 @@ const bot = new TeleBot({
     bot.on('/show',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
         getProducts(bot,msg,replyMarkup);
+
     });
 
     bot.on('/pago',msg=>{
@@ -41,6 +43,7 @@ const bot = new TeleBot({
 
     bot.on('/add',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
+        createTrolley(msg.from.id);
         bot.sendMessage(msg.from.id,"Añadiendo al carrito",{replyMarkup});
     });
 
