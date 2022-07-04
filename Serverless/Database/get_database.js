@@ -5,7 +5,6 @@ const instance = axios.create({
 })
 async function getDB(){
 try{
-    const res = await instance.get();
     const client = await connectDB();
     const productsDB = client.db("NodeApiStore").collection("Products");
     const showProducts = await productsDB.find({}).toArray();
