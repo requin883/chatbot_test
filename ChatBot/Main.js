@@ -32,7 +32,7 @@ const bot = new TeleBot({
 
     bot.on('/zona',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
-        bot.sendMessage(msg.from.id, 'Trabajamos de 9:00 A.M - 6:00 P.M de lunes a viernes, y realiamos entregas en:', {replyMarkup});
+        bot.sendMessage(msg.from.id, 'Trabajamos de 9:00 A.M - 6:00 P.M de lunes a viernes, y realizamos entregas en:', {replyMarkup});
         //bot.sendMessage(msg.from.id,`${msg.from.first_name}, estamos trabajando:`,{replyMarkup},{replyMarkup});
     });
 
