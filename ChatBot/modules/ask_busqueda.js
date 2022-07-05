@@ -1,5 +1,5 @@
-const boton = require("../Buttons/buttons");
-const instance = require("../Utils/Utils");
+const boton = require("./buttons");
+const instance = require("@utils");
 
 async function fetchProduct(msg,bot){
     if(msg.text.startsWith("/")){
@@ -8,7 +8,7 @@ async function fetchProduct(msg,bot){
     const mensaje=Number(msg.text);
     const id = msg.from.id;
     let mostrarMsg = "";
-    let replyMarkup = bot.inlineKeyboard(boton("/show",bot));
+    let replyMarkup = boton("/show",bot);
     if(!mensaje || mensaje<1 || mensaje>20){
         return bot.sendMessage(id,"Por favor introduzca un número entre 1 y 20",{replyMarkup});
     }else{

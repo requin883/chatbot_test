@@ -11,7 +11,11 @@
   "dependencies": {
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
-    "module-link": "^0.0.0",
+    "module-alias": "^2.2.2",
     "telebot": "^1.4.1"
-  }
+  },
+    "_moduleAliases": {
+        "@mod": "./modules",
+        "@utils": "./utils/utils"
+    }
 }

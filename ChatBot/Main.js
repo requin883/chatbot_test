@@ -1,10 +1,11 @@
+require('module-alias/register');
 const TeleBot = require("telebot");
-const getProducts = require("./modules/products");
-const createTrolley = require("./modules/trolley");
-const getTrolley = require("./modules/show_trolley");
-const fetchProduct = require("./modules/ask_busqueda")
+const getProducts = require("@mod/products");
+const createTrolley = require("@mod/trolley");
+const getTrolley = require("@mod/show_trolley");
+const fetchProduct = require("@mod/ask_busqueda");
 require('dotenv').config();
-let boton=require('./Buttons/buttons');
+let boton=require('@mod/buttons');
 const bot = new TeleBot({
     token:process.env.TOKEN,
     usePlugins: ['commandButton', 'askUser']

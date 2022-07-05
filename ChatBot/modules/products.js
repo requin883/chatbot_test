@@ -1,4 +1,4 @@
-const instance = require("../Utils/Utils");
+const instance = require("@utils");
 
 
 async function getProducts(bot,msg,replyMarkup){
