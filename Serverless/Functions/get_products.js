@@ -1,5 +1,5 @@
-const getDB = require("../Database/get_database");
-
+require('module-alias/register');
+const getDB = require("@DB");
 const handler = async function(event, context) {
     try{
     const products = await getDB();

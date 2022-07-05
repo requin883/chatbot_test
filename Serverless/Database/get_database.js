@@ -1,5 +1,5 @@
 const axios = require("axios");
-const connectDB = require("../Utils/connect_DB")
+const connectDB = require("@Utils")
 const instance = axios.create({
     baseURL:'https://fakestoreapi.com/products'
 })
