@@ -40,13 +40,16 @@ function boton(msg, bot){
                     bot.inlineButton('Galerías Mall', {callback : '/map2'}),
                     bot.inlineButton('Metro Sol', {callback : '/map3'})
                 ],
+                [
+                    bot.inlineButton('Volver al menú principal', {callback: '/back'})
+                ]
             ];
 
         case '/pago':
             return replyMarkup=[
                 [
                     // Boton Primera Fila
-                    bot.inlineButton('💵  Efectivo', {callback: '/efectivo'}),
+                    bot.inlineButton('💵 Efectivo', {callback: '/efectivo'}),
                     bot.inlineButton('Transferencias 💸', {callback: "/transfe"})
                 ],
         
@@ -78,8 +81,8 @@ function boton(msg, bot){
         case '/add':
             return replyMarkup=[
                 [
-                    bot.inlineButton('🧾Generar factura🧾', {callback: '/fact'}),
-                    bot.inlineButton('🛒Añadir otro producto🛒', {callback: '/add'})
+                    bot.inlineButton('🧾 Generar factura', {callback: '/fact'}),
+                    bot.inlineButton('Añadir otro producto 🛒', {callback: '/add'})
                 ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
@@ -88,8 +91,8 @@ function boton(msg, bot){
         case '/search':
             return replyMarkup=[
                 [
-                    bot.inlineButton('🔍Buscar otro Producto🔍', {callback: '/search'}),
-                    bot.inlineButton('🛒Añadir al carrito🛒', {callback: '/add'})
+                    bot.inlineButton('🔍 Buscar otro producto', {callback: '/search'}),
+                    bot.inlineButton('Añadir al carrito 🛒', {callback: '/add'})
                 ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
