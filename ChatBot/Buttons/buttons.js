@@ -95,6 +95,33 @@ function boton(msg, bot){
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
             ]
+        case '/map1':
+            return replyMarkup=[
+                [
+                    bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                ],
+                [
+                    bot.inlineButton('Volver al ménu principal', {callback: '/back'})
+                ]
+            ]
+        case '/map2':
+            return replyMarkup=[
+                [
+                    bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                ],
+                [
+                    bot.inlineButton('Volver al ménu principal', {callback: '/back'})
+                ]
+            ]
+        case '/map3':
+            return replyMarkup=[
+                [
+                    bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                ],
+                [
+                    bot.inlineButton('Volver al ménu principal', {callback: '/back'})
+                ]
+            ]
     }
 };
 
