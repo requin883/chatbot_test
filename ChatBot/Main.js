@@ -2,8 +2,9 @@ const TeleBot = require("telebot");
 const getProducts = require("./modules/products");
 const createTrolley = require("./modules/trolley");
 const instance = require('../ChatBot/Utils/Utils');
+const fetchProduct = require("./modules/ask_busqueda")
 require('dotenv').config();
-let {boton}=require('./Buttons/buttons');
+let boton=require('./Buttons/buttons');
 const bot = new TeleBot({
     token:process.env.TOKEN,
     usePlugins: ['commandButton', 'askUser']
@@ -47,30 +48,12 @@ const bot = new TeleBot({
     });
 
     bot.on('/search',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
         const id=msg.from.id;
-        bot.sendMessage(msg.from.id,"Ingrese un ID para buscar producto", {ask: 'busqueda'});
+        bot.sendMessage(msg.from.id,"Ingrese un ID para buscar producto", {ask:'busqueda'});
     });
 
-    bot.on('ask.busqueda', msg=>{        
-        const mensaje=Number(msg.text);
-        let mostrar="";
-            try{
-                (async(mensaje)=>{
-                    let response=await instance.get("get_products");
-                    let producto=response.data.products;
-                    let len=producto.length;
-                    for(let i=0;i<len;i++){
-                        if(mensaje==producto[i].id){
-                            mostrar="Datos del producto: \nID: "+producto[i].id+"\nNombre: "+producto[i].title+"\nPrecio: "+producto[i].price+"$\nCategoria: "+producto[i].category+"\nImagen del Producto: "+producto[i].image;
-                            console.log(mostrar)
-                        }
-                    }
-                    bot.sendMessage(msg.from.id, mostrar);
-                })(mensaje)
-            }catch(error){
-                console.log(error)
-            }
+    bot.on('ask.busqueda', msg=>{
+        fetchProduct(msg,bot);
     });
     
     //-------------------------------------- Enviar mapas

@@ -128,6 +128,4 @@ function boton(msg, bot){
     }
 };
 
-module.exports={
-    boton
-};
+module.exports=boton;
