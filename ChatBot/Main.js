@@ -11,28 +11,28 @@ const bot = new TeleBot({
     });
 
     bot.on('/start',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.text,bot))
+        let replyMarkup=boton(msg.text,bot);
         bot.sendMessage(msg.from.id, `¡Saludos ${msg.from.first_name}! Bienvenido a nuestra tienda`, {replyMarkup})
     }); 
 
     bot.on('/back',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
+        let replyMarkup=boton(msg.data,bot);
         bot.sendMessage(msg.from.id, `¿Qué deseas hacer, ${msg.from.first_name}?`, {replyMarkup});
     }); 
     
     bot.on('/show',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
+        let replyMarkup=boton(msg.data,bot);
         getProducts(bot,msg,replyMarkup);
 
     });
 
     bot.on('/pago',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot));
+        let replyMarkup=boton(msg.data,bot);
         bot.sendMessage(msg.from.id,`${msg.from.first_name}, actualmente aceptamos`,{replyMarkup});
     });
 
     bot.on('/zona',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
+        let replyMarkup=boton(msg.data,bot);
         bot.sendMessage(msg.from.id, 'Trabajamos de 9:00 A.M - 6:00 P.M de lunes a viernes, y realizamos entregas en:', {replyMarkup});
     });
 
@@ -41,7 +41,7 @@ const bot = new TeleBot({
     });
 
     bot.on('/add',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
+        let replyMarkup=boton(msg.data,bot);
         createTrolley(msg.from.id);
         bot.sendMessage(msg.from.id,"Añadiendo al carrito",{replyMarkup});
     });
@@ -58,16 +58,16 @@ const bot = new TeleBot({
     //-------------------------------------- Enviar mapas
 
     bot.on('/map1', msg => {
-        let replyMarkup = bot.inlineKeyboard(boton(msg.data, bot))
+        let replyMarkup =boton(msg.data, bot);
         bot.sendLocation(msg.from.id, [10.644715920875937, -71.61821645983906], {replyMarkup});
     });
 
     bot.on('/map2', msg => {
-        let replyMarkup = bot.inlineKeyboard(boton(msg.data, bot))
+        let replyMarkup = boton(msg.data, bot);
         bot.sendLocation(msg.from.id, [10.671812671276458, -71.65369837326266], {replyMarkup});
     });
     bot.on('/map3', msg => {
-        let replyMarkup = bot.inlineKeyboard(boton(msg.data, bot))
+        let replyMarkup = boton(msg.data, bot);
         bot.sendLocation(msg.from.id, [10.59882925256173, -71.65087523348457], {replyMarkup});
     });
 
@@ -79,13 +79,7 @@ const bot = new TeleBot({
     // });
 
     bot.on('/fact', (msg) => {
-
-        const inlineKeyboard = bot.inlineKeyboard([
-            [
-                bot.inlineButton('Generar factura', {pay: true})
-            ]
-        ]);
-    
+        const inlineKeyboard = boton(msg.data,bot);
         return bot.sendInvoice(msg.from.id, {
             title: 'Factura de compra',
             description: 'Node API Store',

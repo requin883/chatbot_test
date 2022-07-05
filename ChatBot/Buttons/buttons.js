@@ -1,9 +1,9 @@
-let replyMarkup;
-function boton(msg, bot){
+function boton(msg,bot){
+    let keyboard = bot.inlineKeyboard;
     switch(msg){
         case '/start':
         case '/back':
-            return replyMarkup=[
+            return keyboard([
                 [
                     // Boton Primera Fila
                     bot.inlineButton('📦 Mostrar productos', {callback: '/show'}),
@@ -14,9 +14,9 @@ function boton(msg, bot){
                     // Boton segunda Fila
                     bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
                 ],
-            ];
+            ]);
         case '/show':
-            return replyMarkup=[
+            return keyboard([
                 [
                     // Boton Primera Fila
                     bot.inlineButton('🔍 Buscar Productos', {callback: '/search'}),
@@ -32,9 +32,9 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al menú principal', {callback: '/back'})
                 ]
-            ];
+            ]);
         case '/zona':
-            return replyMarkup = [
+            return keyboard([
                 [
                     bot.inlineButton('Ciudad Chinita', {callback : '/map1'}),
                     bot.inlineButton('Galerías Mall', {callback : '/map2'}),
@@ -43,10 +43,10 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al menú principal', {callback: '/back'})
                 ]
-            ];
+            ]);
 
         case '/pago':
-            return replyMarkup=[
+            return keyboard([
                 [
                     // Boton Primera Fila
                     bot.inlineButton('💵 Efectivo', {callback: '/efectivo'}),
@@ -61,15 +61,18 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al menú principal', {callback: '/back'})
                 ]
-            ];
+            ]);
         case '/fact':
-            return replyMarkup=[
+            return keyboard([
+                [
+                    bot.inlineButton('Generar factura', {pay: true})
+                ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/view':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('🧾 Generar factura', {callback: '/fact'}),
                     bot.inlineButton('Añadir al carrito 🛒', {callback: '/add'})
@@ -77,9 +80,9 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/add':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('🧾 Generar factura', {callback: '/fact'}),
                     bot.inlineButton('Añadir otro producto 🛒', {callback: '/add'})
@@ -87,9 +90,9 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/search':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('🔍 Buscar otro producto', {callback: '/search'}),
                     bot.inlineButton('Añadir al carrito 🛒', {callback: '/add'})
@@ -97,34 +100,51 @@ function boton(msg, bot){
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/map1':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
                 ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/map2':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
                 ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
         case '/map3':
-            return replyMarkup=[
+            return keyboard([
                 [
                     bot.inlineButton('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
                 ],
                 [
                     bot.inlineButton('Volver al ménu principal', {callback: '/back'})
                 ]
-            ]
+            ])
+        case "/fact":
+            return keyboard([
+                [
+                    bot.inlineButton('Generar factura', {pay: true})
+                ]
+            ])
+        case "/empty":
+            return keyboard([                
+            [
+                // Boton Primera Fila
+                bot.inlineButton('📦 Mostrar productos', {callback: '/show'}),
+                bot.inlineButton('🔍 Buscar Productos', {callback: '/search'})
+            ],
+            [
+                bot.inlineButton('Volver al ménu principal', {callback: '/back'})
+            ]   
+            ])
     }
 };
 
