@@ -12,10 +12,11 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "module-alias": "^2.2.2",
+    "nodemailer": "^6.7.6",
     "telebot": "^1.4.1"
   },
-    "_moduleAliases": {
-        "@mod": "./modules",
-        "@utils": "./utils/utils"
-    }
+  "_moduleAliases": {
+    "@mod": "./modules",
+    "@utils": "./utils/utils"
+  }
 }
