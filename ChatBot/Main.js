@@ -1,7 +1,7 @@
 const TeleBot = require("telebot");
 const getProducts = require("./modules/products");
 const createTrolley = require("./modules/trolley");
-const instance = require('../ChatBot/Utils/Utils');
+const getTrolley = require("./modules/show_trolley");
 const fetchProduct = require("./modules/ask_busqueda")
 require('dotenv').config();
 let boton=require('./Buttons/buttons');
@@ -37,8 +37,7 @@ const bot = new TeleBot({
     });
 
     bot.on('/view',msg=>{
-        let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
-        bot.sendMessage(msg.from.id,"Reviza tu carrito para confirmar la compra",{replyMarkup});
+        getTrolley(msg,bot);
     });
 
     bot.on('/add',msg=>{
@@ -55,7 +54,7 @@ const bot = new TeleBot({
     bot.on('ask.busqueda', msg=>{
         fetchProduct(msg,bot);
     });
-    
+
     //-------------------------------------- Enviar mapas
 
     bot.on('/map1', msg => {
