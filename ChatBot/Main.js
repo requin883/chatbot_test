@@ -1,17 +1,17 @@
 const TeleBot = require("telebot");
 const getProducts = require("./modules/products");
-const createTrolley = require("./modules/trolley")
+const createTrolley = require("./modules/trolley");
+const instance = require('../ChatBot/Utils/Utils');
 require('dotenv').config();
 let {boton}=require('./Buttons/buttons');
 const bot = new TeleBot({
     token:process.env.TOKEN,
-    usePlugins: ['commandButton']
+    usePlugins: ['commandButton', 'askUser']
     });
 
     bot.on('/start',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.text,bot))
         bot.sendMessage(msg.from.id, `¡Saludos ${msg.from.first_name}! Bienvenido a nuestra tienda`, {replyMarkup})
-        //bot.sendMessage(msg.from.id,"Menu Principal",{replyMarkup});
     }); 
 
     bot.on('/back',msg=>{
@@ -54,7 +54,29 @@ const bot = new TeleBot({
 
     bot.on('/search',msg=>{
         let replyMarkup=bot.inlineKeyboard(boton(msg.data,bot))
-        bot.sendMessage(msg.from.id,"Mostrando informacion",{replyMarkup});
+        const id=msg.from.id;
+        bot.sendMessage(msg.from.id,"Ingrese un ID para buscar producto", {ask: 'busqueda'});
+    });
+
+    bot.on('ask.busqueda', msg=>{        
+        const mensaje=Number(msg.text);
+        let mostrar="";
+            try{
+                (async(mensaje)=>{
+                    let response=await instance.get("get_products");
+                    let producto=response.data.products;
+                    let len=producto.length;
+                    for(let i=0;i<len;i++){
+                        if(mensaje==producto[i].id){
+                            mostrar="Datos del producto: \nID: "+producto[i].id+"\nNombre: "+producto[i].title+"\nPrecio: "+producto[i].price+"$\nCategoria: "+producto[i].category+"\nImagen del Producto: "+producto[i].image;
+                            console.log(mostrar)
+                        }
+                    }
+                    bot.sendMessage(msg.from.id, mostrar);
+                })(mensaje)
+            }catch(error){
+                console.log(error)
+            }
     });
     
     //-------------------------------------- Enviar mapas
