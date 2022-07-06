@@ -86,7 +86,7 @@ function boton(msg,bot){
             return keyboard([
                 [
                     button('🧾 Generar factura', {callback: '/fact'}),
-                    button('Añadir otro producto 🛒', {callback: '/add'})
+                    button('Añadir otro producto 🛒', {callback: '/search'})
                 ],
                 [
                     button('Volver al ménu principal', {callback: '/back'})
