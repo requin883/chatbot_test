@@ -4,7 +4,7 @@ const getProducts = require("@mod/products");
 const createTrolley = require("@mod/trolley");
 const getTrolley = require("@mod/show_trolley");
 const fetchProduct = require("@mod/ask_busqueda");
-const pushProduct = require('@mod/ask_push');
+const pushProduct = require("@mod/ask_push")
 require('dotenv').config();
 let boton=require('@mod/buttons');
 const bot = new TeleBot({
@@ -43,13 +43,12 @@ const bot = new TeleBot({
     });
 
     bot.on('/add',msg=>{
-        let replyMarkup=boton(msg.data,bot);
         createTrolley(msg.from.id);
-        bot.sendMessage(msg.from.id,"Añadiendo al carrito", {ask: 'enviar'});
+        bot.sendMessage(msg.from.id,`${msg.from.first_name}, por favor indica el ID del objecto que desea agregar al carrito`, {ask: 'enviar'});
     });
 
     bot.on('ask.enviar', msg=>{
-        pushProduct(msg, bot);
+        pushProduct(msg,bot);
     })
 
     bot.on('/search',msg=>{
