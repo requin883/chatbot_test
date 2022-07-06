@@ -8,14 +8,15 @@ let transporter = nodemailer.createTransport({
         pass:"nnpsipqyvntnusaw"
     },
   });
-
-
-async function sendInvoice() {
+async function sendInvoice(msg,to,) {
+  let subject = ``;
+  let text = ``;
+  let html = ``;
   let info = await transporter.sendMail({
-    from: '"Node API Store" <nodeapi.store@gmail.com>', 
-    to: "receiver", 
-    subject: "Hello ✔", 
-    text: "Hello world?", 
+    from:'"Node API Store"<nodeapi.store@gmail.com>', 
+    to, 
+    subject, 
+    text, 
     html: "<b>Hello world?</b>",
   });
 
