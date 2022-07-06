@@ -7,7 +7,7 @@ const handler = async function(event, context) {
     const newTrolley = await trolley.find({id}).toArray();
     if(event.httpMethod=="POST"){
     if(newTrolley.length == false){
-        await trolley.insertOne({id});
+        await trolley.insertOne({id,data:[]});
         return({
             statusCode:200,
             body:"Inserción completada"
@@ -22,8 +22,7 @@ const handler = async function(event, context) {
         return ({
             statusCode:200,
             body:JSON.stringify(res)
-            }
-            );
+            });
     }
     }catch(err){
         console.log(err);
