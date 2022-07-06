@@ -1,10 +1,13 @@
 const instance = require("@utils");
 
-async function enviarProducto(id,objeto){
+async function enviarProducto(id,products){
     try{
-    await instance.post(`post_products?id=${id}&info=${objeto}`)
+        let URI = `post_products?id=${id}&data=${products}`;
+        const res = await instance.post(URI);
+        console.log(res);
     }catch(err){
         console.log(err);
     }
 }
+
 module.exports = enviarProducto;
