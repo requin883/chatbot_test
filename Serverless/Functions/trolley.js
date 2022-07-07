@@ -23,7 +23,7 @@ const handler = async function(event, context) {
             statusCode:200,
             body:JSON.stringify(res)
             });
-    }else if(event.httpMethod=="PUT"){
+    }else if(event.httpMethod=="DELETE"){
         await trolley.deleteOne({id});
         return({
             statusCode:200,
