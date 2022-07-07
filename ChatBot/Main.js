@@ -60,14 +60,11 @@ const bot = new TeleBot({
 
     //-------------------------------------- Enviar mapas
 
-
     bot.on('/zona',msg=>{
         let replyMarkup=boton(msg.data,bot);
-        bot.sendMessage(msg.from.id, 'También tenemos delivery gratis en estas ubicaciones 🔥, selecciona una para saber como llegar');
-        bot.sendMessage(msg.from.id, '¡Trabajamos de 9:00 A.M a 6:00 P.M de lunes a viernes! 😎', {replyMarkup})
+        bot.sendMessage(msg.from.id, '¡Trabajamos de 9:00 A.M a 6:00 P.M de lunes a viernes! 😎\n\nTambién tenemos delivery gratis en estas ubicaciones 🔥, selecciona una para saber como llegar', {replyMarkup})
     });
 
-    
 
     bot.on('/otrasZona',msg=>{
         let replyMarkup=boton(msg.data,bot);
