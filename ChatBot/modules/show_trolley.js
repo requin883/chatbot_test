@@ -7,8 +7,8 @@ async function getTrolley(msg,bot){
     let replyMarkup = boton(msg.data,bot);
     try{
         const res = await instance.get(`trolley?id=${id}`);
-        let products = res.data[0].data;
-        if(products.length==0){
+        let products = res.data!=false?res.data[0].data:undefined;
+        if(products == undefined || products.length==0){
             replyMarkup = boton("/empty",bot);
             return bot.sendMessage(id,`${name}! El carrito todavía está vació por favor ingresa algún artículo para empezar a llenar tu carrito🔥`,{replyMarkup});
             }
