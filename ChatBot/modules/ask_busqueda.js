@@ -24,7 +24,7 @@ async function fetchProduct(msg,bot){
         Imagen del Producto:${producto.image}`;
         return bot.sendMessage(msg.from.id, mostrarMsg,{replyMarkup});
     }catch(error){
-        console.log(error)
+        console.log(error);
     }}
 }
 
