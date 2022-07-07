@@ -1,4 +1,4 @@
-const connectDB = require("@Utils");
+const connectDB = require("../Utils/connect_DB");
 const handler = async function(event, context) {
     let {id} = event.queryStringParameters;
     try{

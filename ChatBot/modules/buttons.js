@@ -27,7 +27,7 @@ function boton(msg,bot){
                 [
                     // Boton segunda Fila
                     button('🛒 Consultar carrito', {callback: '/view'}),
-                    button('Métodos de pago 💸', {callback: '/pago'})
+                    button('Vaciar Carrito' , {callback: '/empty'})
                 ],
 
                 [
@@ -76,7 +76,8 @@ function boton(msg,bot){
             return keyboard([
                 [
                     button('🧾 Generar factura', {callback: '/fact'}),
-                    button('Añadir al carrito 🛒', {callback: '/add'})
+                    button('Añadir al carrito 🛒', {callback: '/add'}),
+                    button('Vaciar Carrito' , {callback: '/empty'})
                 ],
                 [
                     button('Volver al ménu principal', {callback: '/back'})
@@ -89,7 +90,8 @@ function boton(msg,bot){
                     button('Añadir otro producto 🛒', {callback: '/search'})
                 ],
                 [
-                    button('🛒Consultar carrito', {callback:'/view'})
+                    button('🛒Consultar carrito', {callback:'/view'}),
+                    button('Vaciar Carrito' , {callback: '/empty'})
                 ]
                 [
                     button('Volver al ménu principal', {callback: '/back'})
@@ -102,7 +104,9 @@ function boton(msg,bot){
                     button('Añadir al carrito 🛒', {callback: '/add'})
                 ],
                 [
-                    button('🛒Consultar carrito', {callback:'/view'}),
+                    button('Vaciar Carrito' , {callback: '/empty'})
+                ],
+                [
                     button('Volver al ménu principal', {callback: '/back'})
                 ]
             ])
