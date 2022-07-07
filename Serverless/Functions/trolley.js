@@ -1,3 +1,4 @@
+require('module-alias/register');
 const connectDB = require("@Utils");
 const handler = async function(event, context) {
     let {id} = event.queryStringParameters;
