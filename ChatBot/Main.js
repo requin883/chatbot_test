@@ -4,7 +4,8 @@ const getProducts = require("@mod/products");
 const createTrolley = require("@mod/trolley");
 const getTrolley = require("@mod/show_trolley");
 const fetchProduct = require("@mod/ask_busqueda");
-const pushProduct = require("@mod/ask_push")
+const pushProduct = require("@mod/ask_push");
+const emptyTrolley = require("@mod/empty_trolley");
 require('dotenv').config();
 let boton=require('@mod/buttons');
 const bot = new TeleBot({
@@ -56,6 +57,11 @@ const bot = new TeleBot({
         bot.sendMessage(msg.from.id,"Ingrese un ID para buscar producto", {ask:'busqueda'});
     });
 
+    bot.on('/empty',msg=>{
+        let replyMarkup=boton(msg.data,bot);
+        emptyTrolley(msg,bot,replyMarkup);
+    })
+
     bot.on('ask.busqueda', msg=>{
         fetchProduct(msg,bot);
     });
@@ -76,10 +82,7 @@ const bot = new TeleBot({
         \n2.) Copia la dirección de depósito, así como cualquier otro dato que te pidan (MEMO, tag, etc.) del exchange/billetera al que quieres enviar la criptomoneda. 
         \n3.) Una vez claros los pasos 1 y 2, solo tienes que pegar esos datos en la plataformas desde que vas a hacer el retiro, escoger la cantidad a enviar y confirmar la transferencia.
         \nUna vez terminada la transaccion no olvide Enviar el comprobante de Transaccion a nuestro Correo (nodeapi.store@gmail.com) para que su pago sea verificado y aprobado`
-        
         bot.sendMessage(id,mensaje,{replyMarkup});
-
-
     })
 
     bot.on('/transfe', msg=>{
