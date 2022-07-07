@@ -9,13 +9,14 @@ async function getProducts(bot,msg,replyMarkup){
 
 function processData(data){
     let newData = [...data
-        .map(product=>`${product.id}.) ${product.title.length>20
+        .map(product=>`🆔 ${product.id} | ${product.title.length>20
             ?product.title.split(" ").slice(0,5).join(" ")
-            :product.title} - $${product.price}\n`)
+            :product.title} 🔹 $${product.price}\n\n`)
         ];
     newData = newData.join("");
     return newData;
 }
+
 
 
 module.exports = getProducts;
