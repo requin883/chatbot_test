@@ -13,7 +13,7 @@ async function pushProduct(msg,bot){
         return bot.sendMessage(msgId,"Por favor introduzca un número entre 1 y 20",{replyMarkup});
     }else{
         try{
-            let response=await instance.get(`get_products?id=${numero}`);
+            let response=await instance.get(`get_products`);
             let product=response.data.products;
             const [producto] = product.filter(product=>numero==product.id);
             objeto.ID=`${producto.id}`;
