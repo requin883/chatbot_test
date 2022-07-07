@@ -102,6 +102,7 @@ function boton(msg,bot){
                     button('Añadir al carrito 🛒', {callback: '/add'})
                 ],
                 [
+                    button('🛒Consultar carrito', {callback:'/view'}),
                     button('Volver al ménu principal', {callback: '/back'})
                 ]
             ])

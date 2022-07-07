@@ -1,5 +1,5 @@
 const boton = require("./buttons");
-const instance = require("@utils");
+const instance = require("@utils/utils");
 
 async function fetchProduct(msg,bot){
     if(msg.text.startsWith("/")){

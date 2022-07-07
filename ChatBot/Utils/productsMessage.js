@@ -4,7 +4,7 @@ async function showProductsMessage(products){
     products = await products;
 products = products.map(items=>{precioFinal+=Number(items.precio.replace("$"," "));
 return `➖➖➖\nID: ${items.ID}\n nombre: ${items.nombre}\n precio: ${items.precio}\n cantidad: ${items.cantidad}\n`});
-    products = `Items en el carrito:\n${products.join(" ")}\n Precio Final: $${precioFinal}`;
+    products = `Items en el carrito:\n${products.join(" ")}➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\n Precio Final: $${precioFinal}`;
 
     return products;
 }

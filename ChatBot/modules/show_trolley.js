@@ -1,6 +1,6 @@
-const instance = require("@utils");
+const instance = require("@utils/utils");
 const boton = require("./buttons");
-const showProductsMessage = require("../utils/productsMessage")
+const showProductsMessage = require("@utils/productsMessage")
 async function getTrolley(msg,bot){
     let id = msg.from.id;
     let name = msg.from.first_name || msg.from.username;
@@ -14,7 +14,6 @@ async function getTrolley(msg,bot){
             }
         else{
             products = await showProductsMessage(products);
-            console.log(products);
             bot.sendMessage(id,products,{replyMarkup});
         }
     }catch(err){

@@ -1,5 +1,5 @@
 require('module-alias/register');
-const instance = require('@utils');
+const instance = require('@utils/utils');
 const enviarProducto = require('./push');
 const boton = require("./buttons");
 
