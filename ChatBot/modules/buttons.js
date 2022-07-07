@@ -150,6 +150,28 @@ function boton(msg,bot){
                 button('Volver al ménu principal', {callback: '/back'})
             ]   
             ])
+        case '/transfe':
+        case '/criptos':
+            return keyboard([
+                [
+                    button('Volver a Metodos de Pago', {callback: '/pago'})
+                ],
+                [
+                    button('Volver al ménu principal', {callback: '/back'})
+                ]
+            ])
+        
+        case '/efectivo':
+            return keyboard([
+                [
+                    button('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'}),
+                    button('Volver a Metodos de Pago', {callback: '/pago'})
+                ],
+                [
+                    button('Volver al ménu principal', {callback: '/back'})
+                ]
+            ])
+
     }
 };
 
