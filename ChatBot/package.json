@@ -17,6 +17,6 @@
   },
   "_moduleAliases": {
     "@mod": "./modules",
-    "@utils": "./utils/utils"
+    "@utils": "./utils"
   }
 }

@@ -1,5 +1,5 @@
 const boton = require("./buttons");
-const instance = require("@utils");
+const instance = require("@utils/utils");
 
 async function fetchProduct(msg, bot){
 
@@ -26,7 +26,7 @@ ${producto.image}`;
         
     return bot.sendMessage(msg.from.id, mostrarMsg,{replyMarkup});
     }catch(error){
-        console.log(error)
+        console.log(error);
     }}
 }
 

@@ -1,4 +1,4 @@
-const instance = require("@utils");
+const instance = require("@utils/utils");
 
 async function enviarProducto(id,products){
     try{
