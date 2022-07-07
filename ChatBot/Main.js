@@ -8,6 +8,8 @@ const pushProduct = require("@mod/ask_push");
 const emptyTrolley = require("@mod/empty_trolley");
 require('dotenv').config();
 let boton=require('@mod/buttons');
+
+
 const bot = new TeleBot({
     token:process.env.TOKEN,
     usePlugins: ['commandButton', 'askUser']
@@ -34,11 +36,6 @@ const bot = new TeleBot({
         bot.sendMessage(msg.from.id,`${msg.from.first_name}, actualmente aceptamos`,{replyMarkup});
     });
 
-    bot.on('/zona',msg=>{
-        let replyMarkup=boton(msg.data,bot);
-        bot.sendMessage(msg.from.id, 'Trabajamos de 9:00 A.M - 6:00 P.M de lunes a viernes, y realizamos entregas en:', {replyMarkup});
-    });
-
     bot.on('/view',msg=>{
         getTrolley(msg,bot);
     });
@@ -54,7 +51,7 @@ const bot = new TeleBot({
 
     bot.on('/search',msg=>{
         const id=msg.from.id;
-        bot.sendMessage(msg.from.id,"Ingrese un ID para buscar producto", {ask:'busqueda'});
+        bot.sendMessage(msg.from.id,"Debes escribir el 🆔 para mostrar un producto", {ask:'busqueda'});
     });
 
     bot.on('/empty',msg=>{
@@ -98,6 +95,17 @@ const bot = new TeleBot({
 
     //-------------------------------------- Enviar mapas
 
+    bot.on('/zona',msg=>{
+        let replyMarkup=boton(msg.data,bot);
+        bot.sendMessage(msg.from.id, '¡Trabajamos de 9:00 A.M a 6:00 P.M de lunes a viernes! 😎\n\nTambién tenemos delivery gratis en estas ubicaciones 🔥, selecciona una para saber como llegar', {replyMarkup})
+    });
+
+
+    bot.on('/otrasZona',msg=>{
+        let replyMarkup=boton(msg.data,bot);
+        bot.sendMessage(msg.from.id, 'Aprende a llegar nuestros puntos de entrega', {replyMarkup});
+    });
+
     bot.on('/map1', msg => {
         let replyMarkup =boton(msg.data, bot);
         bot.sendLocation(msg.from.id, [10.644715920875937, -71.61821645983906], {replyMarkup});
@@ -111,61 +119,4 @@ const bot = new TeleBot({
         let replyMarkup = boton(msg.data, bot);
         bot.sendLocation(msg.from.id, [10.59882925256173, -71.65087523348457], {replyMarkup});
     });
-
-    //-------------------------------------- Generar factura
-
-    // bot.on('/fact',msg=>{
-    //     let replyMarkup = bot.inlineKeyboard(boton(msg.data,bot))
-    //     bot.sendMessage(msg.from.id,"Reviza tu factura para confirmar tu pago", {replyMarkup});
-    // });
-
-    bot.on('/fact', (msg) => {
-        const inlineKeyboard = boton(msg.data,bot);
-        return bot.sendInvoice(msg.from.id, {
-            title: 'Factura de compra',
-            description: 'Node API Store',
-            payload: 'telebot-test-invoice',
-            providerToken: '284685063:TEST:YjE0YjRiMWVhNzZl',
-            startParameter: 'pay',
-            currency: 'USD',
-            prices: [
-                {label: 'Tea', amount: 125},
-                {label: 'For testing!', amount: 1250},
-            ],
-            need: {email: true, phoneNumbe: false},
-            // needShippingAdress: true,
-            // isFlexible: false,
-            // sendEmailToProvider: true,
-            replyMarkup: inlineKeyboard
-        }).then(data => {
-            console.log('OK', data);
-        }).catch(error => {
-            console.log('ERROR', error);
-        });
-    
-    });
-    
-    // bot.on('shippingQuery', (msg) => {
-    //     console.log('shippingQuery', msg);
-    // });
-    
-    // bot.on('preShippingQuery', (msg) => {
-    //     console.log('preShippingQuery', msg);
-    
-    //     const id = msg.id;
-    //     const isOk = true;
-    
-    //     return bot.answerPreCheckoutQuery(id, isOk);
-    
-    // });
-    
-    bot.on('successfulPayment', (msg) => {
-        console.log('successfulPayment', msg);
-    
-        return bot.sendMessage(msg.from.id, `Gracias por tu compra, ${msg.from.first_name}!`);
-    
-    });
-    
-    
-    
 bot.start();

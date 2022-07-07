@@ -1,6 +1,9 @@
-function boton(msg,bot){
+function boton(msg,bot)
+{
+
     let keyboard = bot.inlineKeyboard;
     let button = bot.inlineButton;
+
     switch(msg){
         case '/start':
         case '/back':
@@ -20,7 +23,7 @@ function boton(msg,bot){
             return keyboard([
                 [
                     // Boton Primera Fila
-                    button('🔍 Buscar Productos', {callback: '/search'}),
+                    button('🔍 Buscar un productos', {callback: '/search'}),
                     button('Agregar al carrito 🛒', {callback: "/add"})
                 ],
         
@@ -35,6 +38,7 @@ function boton(msg,bot){
                 ]
             ]);
         case '/zona':
+        case '/otrasZona':
             return keyboard([
                 [
                     button('Ciudad Chinita', {callback : '/map1'}),
@@ -89,7 +93,7 @@ function boton(msg,bot){
                     button('Añadir otro producto 🛒', {callback: '/search'})
                 ],
                 [
-                    button('🛒Consultar carrito', {callback:'/view'})
+                    button('🛒 Consultar carrito', {callback:'/view'})
                 ]
                 [
                     button('Volver al ménu principal', {callback: '/back'})
@@ -109,7 +113,7 @@ function boton(msg,bot){
         case '/map1':
             return keyboard([
                 [
-                    button('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                    button('🛵 Otras zonas de delivery', {callback: '/otrasZona'})
                 ],
                 [
                     button('Volver al ménu principal', {callback: '/back'})
@@ -118,7 +122,7 @@ function boton(msg,bot){
         case '/map2':
             return keyboard([
                 [
-                    button('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                    button('🛵 Otras zonas de delivery', {callback: '/otrasZona'})
                 ],
                 [
                     button('Volver al ménu principal', {callback: '/back'})
@@ -127,7 +131,7 @@ function boton(msg,bot){
         case '/map3':
             return keyboard([
                 [
-                    button('⏰ Horario de trabajo | Zonas de delivery 🛵', {callback: '/zona'})
+                    button('🛵 Otras zonas de delivery', {callback: '/otrasZona'})
                 ],
                 [
                     button('Volver al ménu principal', {callback: '/back'})
