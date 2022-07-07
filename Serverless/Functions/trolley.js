@@ -24,7 +24,7 @@ const handler = async function(event, context) {
             body:JSON.stringify(res)
             });
     }else if(event.httpMethod=="PUT"){
-        await trolley.updateOne({id},{$set:{"data":[]}});
+        await trolley.deleteOne({id});
         return({
             statusCode:200,
             body:`Trolley with ID:${id} was sucessfully deleted`
