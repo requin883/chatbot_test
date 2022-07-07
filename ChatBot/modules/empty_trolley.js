@@ -1,9 +1,10 @@
 require('module-alias/register');
 const instance = require("@utils/utils");
 
-async function emptyTrolley(id){
-    // let id = msg.from.id;
-    const updateTrolley = await instance.put(`trolley?id=${id}`);
-    console.log(updateTrolley);
+async function emptyTrolley(msg,bot,replyMarkup){
+    let id = msg.from.id;
+    await instance.delete(`trolley?id=${id}`);
+    bot.sendMessage(id,`${msg.from.first_name}! Lamentamos informarte que tu carrito ha sido eliminado`,{replyMarkup});
 }
-emptyTrolley("1882082654");
+
+module.exports = emptyTrolley;
