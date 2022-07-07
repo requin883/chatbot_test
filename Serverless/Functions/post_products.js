@@ -3,6 +3,7 @@ const connectDB = require("@Utils");
 
 const handler = async (event,context)=>{
     let {id,data} = event.queryStringParameters;
+    console.log(data);
     data = JSON.parse(data);
     let dataId = data.ID;
     let dataQuery = {'data.ID':{$eq:data.ID}};
@@ -13,7 +14,7 @@ const handler = async (event,context)=>{
     if (validateTrolleyData == undefined || validateTrolleyData.length==0){
         await trolley.updateOne({id},{$push:{data}});
     return({
-        statusCode:200,
+        statusCode:200, 
         body:"Ha sido actualizada"
     })
 }else{

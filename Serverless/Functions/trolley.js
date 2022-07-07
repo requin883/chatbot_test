@@ -24,11 +24,18 @@ const handler = async function(event, context) {
             body:JSON.stringify(res)
             });
     }else if(event.httpMethod=="DELETE"){
-        await trolley.deleteOne({id});
-        return({
-            statusCode:200,
-            body:`Trolley with ID:${id} was sucessfully deleted`
-        })
+        if(newTrolley.length == false){
+            await trolley.deleteOne({id});
+            return({
+                statusCode:200,
+                body:`Trolley with ID:${id} was sucessfully deleted`
+            })
+        }else{
+            return({
+                statusCode:200,
+                body:'The trolley doesn\'t exist'
+            })
+        }
     }
     }catch(err){
         console.log(err);
