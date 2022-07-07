@@ -6,6 +6,7 @@ const getTrolley = require("@mod/show_trolley");
 const fetchProduct = require("@mod/ask_busqueda");
 const pushProduct = require("@mod/ask_push");
 const emptyTrolley = require("@mod/empty_trolley");
+const getfactura= require('@mod/getFact')
 require('dotenv').config();
 let boton=require('@mod/buttons');
 
